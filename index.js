@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const connectDB = require('./src/config/db');
 const userRouter = require('./src/routes/user.routes');
 const carRouter = require('./src/routes/cars.routes');
+const flwRoute = require('./src/routes/flutterwave.routes');
 
 dotenv.config();
 const app = express();
@@ -18,6 +19,7 @@ app.get('/', (req, res)=> {
 
 app.use('/api/users', userRouter);
 app.use('/api/cars', carRouter);
+app.use('/api/webhook', flwRoute);
 
 
 app.listen(PORT, ()=> {
